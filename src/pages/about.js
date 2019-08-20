@@ -45,7 +45,7 @@ const IndexPage = ({ data: {intro, posts} }) => (
         </div>
         {
             posts
-                ? <PostList posts={posts.edges.map(({node}) => node.frontmatter)} size="small" />
+                ? <PostList posts={posts.edges.map(({node}) => node.frontmatter)} />
                 : <p className="container">No posts are available.</p>
         }
     </Layout>

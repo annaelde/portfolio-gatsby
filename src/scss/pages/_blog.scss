@@ -98,9 +98,13 @@
 .post-list__meta
 {
 	@include type-regular;
-	cursor: default;
+    cursor: default;
 	padding: scale(-1) * 1rem;
-	position: relative;
+    position: relative;
+
+    :nth-child(even) {
+        margin: 0 (scale(-1) / 2) * 1rem 0 (scale(-1) / 2) * 1rem;
+    }
 }
 
 .post-list__comment-count

@@ -9,9 +9,9 @@ const Header = ({ siteTitle }) => (
             <nav role="navigation">
                 <button type="menu" title="This menu requires JavaScript." id="menu-icon" tabIndex="2"><span className="button__label">Toggle Navigation Menu</span></button>
                 <ul>
+                    <li><Link to="/about" tabIndex="5">About</Link></li>
                     <li><Link to="/projects" tabIndex="3">Projects</Link></li>
                     <li><Link to="/blog" tabIndex="4">Blog</Link></li>
-                    <li><Link to="/contact" tabIndex="5">Contact</Link></li>
                 </ul>
             </nav>
         </div>
