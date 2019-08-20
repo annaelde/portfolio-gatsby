@@ -7,8 +7,8 @@ export default ({posts, size, ...props}) => {
 
     return (
     <div className={containerClass}>
-        {posts.map(({title, snippet, slug, date}) => (
-            <PostCard key={slug} title={title} snippet={snippet} slug={slug} date={date} size={size} />
+        {posts.map(({title, snippet, slug, date, banner}) => (
+            <PostCard key={slug} title={title} snippet={snippet} slug={slug} date={date} size={size} banner={banner} />
         ))}
     </div>
     )

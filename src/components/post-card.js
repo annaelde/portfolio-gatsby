@@ -1,7 +1,7 @@
 import React from 'react'
 import PostBanner from './post-banner'
 
-export default ({title, snippet, date, slug, banner, size, ...props}) => {
+export default ({title, snippet, date, slug, banner = {}, size, ...props}) => {
     const isFullsize = size == 'full'
     const itemClass = `post-list__item ${isFullsize ? 'post-list__item--full' : 'post-list__item--small'}`
     const headingClass = `post-list__heading ${isFullsize ? 'post-list__heading--full' : ''}`

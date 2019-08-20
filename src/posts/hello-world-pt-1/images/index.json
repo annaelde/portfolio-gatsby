@@ -1,0 +1,11 @@
+{
+    "banner": {
+        "alt": "",
+        "title": "",
+        "thumbnail": "hello-world-pt-1-tb.jpg",
+        "small": "hello-world-pt-1-800.jpg",
+        "medium": "hello-world-pt-1-1200.jpg",
+        "large": "hello-world-pt-1-1600.jpg",
+        "huge": "hello-world-pt-1-1920.jpg"
+    }
+}

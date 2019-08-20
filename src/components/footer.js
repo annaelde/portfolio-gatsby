@@ -14,7 +14,7 @@ export default () => (
             </div>
         </div>
         <div className="footer__copyright">
-            Copyright © 2018 Anna Elde.
+            Copyright © 2019 Anna Elde. Built with <a href="https://www.gatsbyjs.org/">Gatsby ⚛</a>
         </div>
     </footer>
 )

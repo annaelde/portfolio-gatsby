@@ -6,11 +6,11 @@ import {range} from 'lodash'
 const getParams = (page, tag) => page ? queryString.stringify({page, ...(tag && {tag})}) : null
 
 const Pagination = ({params, count, limit = 10}) => {
-    const {page: currentPage = 1, tag} = params
+    const {page: currentPage = 0, tag} = params
 
     const totalPages = Math.floor(count / limit)
-    const nextPage = currentPage <= totalPages ? currentPage + 1 : null
-    const prevPage = currentPage > 1 ? currentPage - 1 : null
+    const nextPage = currentPage < totalPages ? currentPage + 1 : null
+    const prevPage = currentPage >= 1 ? currentPage - 1 : null
 
     const nextParams = getParams(nextPage, tag)
     const prevParams = getParams(prevPage, tag)
@@ -21,7 +21,7 @@ const Pagination = ({params, count, limit = 10}) => {
             ? <a className="pagination__nav pagination__nav--previous" href={prevParams}></a>
             : <a className="pagination__nav pagination__nav--previous--disabled"></a>}
             <ul className="pagination__numbers">
-                {range(1, totalPages).map(page => {
+                {range(0, totalPages).map(page => {
                     const isCurrent = page === currentPage
                     const itemClass = 'pagination__number' + (isCurrent ? ' pagination__number--current' : '')
                     return (

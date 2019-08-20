@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import {slice} from 'lodash'
+import { slice, find } from 'lodash'
 import queryString from 'query-string'
 
 import Layout from "../components/layout"
@@ -23,43 +23,61 @@ export const query = graphql`
                 }
             }
         }
+        banners: allImagesJson {
+            edges {
+                node {
+                    banner {
+                        title,
+                        alt,
+                        small {
+                            publicURL
+                        }
+                    }
+                }
+            }
+        }
     }
 `
 
 const tags = [
-    {name: 'Django', slug: 'django'}
+    { name: 'Django', slug: 'django' }
 ]
 
-const BlogPage = ({ data: {posts : queriedPosts}, location, ...props }) => {
-    const posts = slice(queriedPosts.edges.map(({node}) => node.frontmatter), currentPage * limit, (currentPage + 1) * limit)
-    const count = posts.length;
+const BlogPage = ({ data: { posts: queriedPosts, banners: queriedBanners }, location, ...props }) => {
+    const { page: currentPage = 0, tag: searchTag } = queryString.parse(location.search)
     const limit = 5
-    const {page: currentPage = 1, tag} = queryString.parse(location.search)
-    const showTagError = tag && !tags.includes(tag)
+    const banners = queriedBanners.edges.map(({ node }) => node.banner)
+    const posts = slice(queriedPosts.edges.map(({ node }) => {
+        const post = node.frontmatter
+        const banner = find(banners, ({small}) => small.publicURL.includes(post.slug))
+        return {...post, banner}
+    }), currentPage * limit, (currentPage + 1) * limit)
+    const count = posts.length;
+    const tag = find(tags, ({ slug }) => slug === searchTag)
 
     return (
-    <Layout>
-        <SEO title="Blog" description="Posts about web development, programming, and technology." />
-        {tag && (
-            <div className="heading">
-                {showTagError
-                    ? <h1 className="container">Tag Not Found!</h1>
-                    : <h1 className="container">Tagged with {{ tag }}</h1>}
-            </div>
-        ) || (
-            <div className="heading">
-                <h1 className="container">Blog</h1>
-            </div>
-        )}
+        <Layout>
+            <SEO title="Blog" description="Posts about web development, programming, and technology." />
+            {tag && (
+                <div className="heading">
+                    {searchTag && !tag
+                        ? <h1 className="container">Tag Not Found!</h1>
+                        : <h1 className="container">Tagged with {tag.name}</h1>}
+                </div>
+            ) || (
+                    <div className="heading">
+                        <h1 className="container">Blog</h1>
+                    </div>
+                )}
 
+            {posts && posts.length > 0
+                ? <PostList posts={posts} size="full" />
+                : <p className="container">No posts are available.</p>}
 
-        { posts
-            ? <PostList posts={posts} size="full" />
-            : <p className="container">No posts are available.</p> }
-
-    <Pagination params={{page: currentPage, tag}} count={count} limit={limit} />
-    <TagCloud tags={tags} />
-    </Layout>
-)}
+            <Pagination params={{ page: currentPage, tag: searchTag }} count={count} limit={limit} />
+            <TagCloud tags={tags} />
+        </Layout>
+    )
+}
 
 export default BlogPage
