@@ -21,13 +21,13 @@ const Pagination = ({params, count, limit = 10}) => {
             ? <a className="pagination__nav pagination__nav--previous" href={prevParams}></a>
             : <a className="pagination__nav pagination__nav--previous--disabled"></a>}
             <ul className="pagination__numbers">
-                {range(0, totalPages).map(page => {
-                    const isCurrent = page === currentPage
+                {range(0, totalPages || 1).map(page => {
+                    const isCurrent = page == currentPage
                     const itemClass = 'pagination__number' + (isCurrent ? ' pagination__number--current' : '')
                     return (
                         <li key={page} className={itemClass}>
-                            {isCurrent ? page : (
-                                <a href={getParams(page, tag)}>{page}</a>
+                            {isCurrent ? page + 1 : (
+                                <a href={getParams(page, tag)}>{page + 1}</a>
                             )}
                         </li>
                     )

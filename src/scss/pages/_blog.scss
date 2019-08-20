@@ -99,11 +99,11 @@
 {
 	@include type-regular;
     cursor: default;
-	padding: scale(-1) * 1rem;
+    padding: scale(-1) * 1rem;
     position: relative;
 
-    :nth-child(even) {
-        margin: 0 (scale(-1) / 2) * 1rem 0 (scale(-1) / 2) * 1rem;
+    > * {
+        margin-right: (scale(-1) / 2) * 1rem;
     }
 }
 
