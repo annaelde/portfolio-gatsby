@@ -1,8 +1,8 @@
 ---
 title: 'Hello World Pt. 1: Choosing Your Stack'
-slug: hello-world-pt-1
 date: January 1 2019
 snippet: Before making a site, you have to pick a language, framework, tools... the list goes on. Find out what I chose to use for my portfolio site and why.
+tags: ['Junior Devs']
 ---
 
 > **Hello World** is a series covering the development of my online portfolio.
@@ -10,7 +10,7 @@ snippet: Before making a site, you have to pick a language, framework, tools... 
 
 [TOC]
 
-# Starting Out
+## Starting Out
 
 Back in June 2017, I was a couple of months away from graduating with an A.S. in Computer Programming. I knew it was time to start working on pulling together all the projects I'd done over the past year into a portfolio.
 
@@ -20,9 +20,9 @@ For the front-end, I envisioned a modern, bright design with interactivity and r
 
 Ultimately, my goal was to apply all the concepts I learned in my degree program to make my best project yet. And that would start with making a plan.
 
-# Planning the Back-End
+## Planning the Back-End
 
-## Choosing a Language and Framework
+### Choosing a Language and Framework
 
 Before I could start development, I had to choose a back-end language and framework to use. Easier said than done when there are so many choices!
 
@@ -39,13 +39,13 @@ What tipped me towards using Python/Django was Python's popularity in many other
 
 **My Pick** : Python and Django
 
-## Choosing a Server Stack
+### Choosing a Server Stack
 
 Once I chose a language and framework to use on the back-end, it was time to figure out my server configuration. 
 
 Some devs might think it's a little early for that, because Django comes with its own development server built-in, but here's my reasoning: if I know how my server will be configured, I can create a development environment that more closely matches it, which will reduce surprises down the line. 
 
-### Servers
+#### Servers
 
 For servers, I could use [Nginx](https://www.nginx.com/resources/wiki/) or [Apache](https://httpd.apache.org/) for my web server and [Gunicorn](http://gunicorn.org/), [CherryPy](http://cherrypy.org/), [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) or [mod_wsgi](https://modwsgi.readthedocs.io/en/develop/) for my application server.
 
@@ -61,7 +61,7 @@ I ended up choosing Gunicorn for my app server because it was simple to install.
 
 **My Pick**: Nginx and Gunicorn
 
-### Databases
+#### Databases
 
 *To SQL or NoSQL?* That is the question. 
 
@@ -77,15 +77,15 @@ I heard a lot of great things about [PostgreSQL](https://www.postgresql.org/), f
 
 **My Pick**: PostgreSQL
 
-# Planning the Front-End
+## Planning the Front-End
 
 HTML, CSS, and JavaScript are the three components of a website's front-end. While you can use preprocessors for HTML (e.g., [Pug](https://pugjs.org/api/getting-started.html)), I wasn't aware of this until after I started developing my site, so I'm only going to discuss options for CSS and JavaScript here.
 
-## JavaScript
+### JavaScript
 
 The only front-end scripting language we can really use is JavaScript ([at least, right now](https://en.wikipedia.org/wiki/WebAssembly "Web Assembly will open up front-end scripting to other languages.")). But there are so many JavaScript libraries and frameworks out there, how do you choose which one to use? 
 
-### Libraries
+#### Libraries
 
 When you think of JavaScript libraries, it's likely that the first one that pops into your mind is jQuery. For a long time, it was *the* JavaScript library. From what I've seen, [jQuery seems to be losing popularity](https://www.javascripting.com/) as more and more alternatives pop up.
 
@@ -93,7 +93,7 @@ I personally didn't want to use jQuery on my website because I felt like [vanill
 
 **My Pick**: Vanilla JavaScript
 
-### Frameworks
+#### Frameworks
 
 I have no experience using front-end frameworks, so my portfolio website seemed like the perfect opportunity to test one out. I had my eye on [Vue.js](https://vuejs.org/), touted as lightweight and super easy to work with.
 
@@ -105,7 +105,7 @@ I'm definitely going to learn Vue and perhaps I'll refactor my JavaScript code o
 
 ** My Pick**: Barba.js
 
-### Transpilers
+#### Transpilers
 
 And beyond libraries and frameworks, there are languages that can be transpiled to JavaScript. So, you can write code using a language with totally different conventions and it can be processed into JavaScript. 
 
@@ -120,11 +120,11 @@ Or if you're more comfortable with statically typed languages (e.g., Java, C#, C
 
 **My Pick**: Babel for ES6
 
-## CSS
+### CSS
 
 CSS stylesheets have a few different development options as well. 
 
-### Frameworks and Preprocessors
+#### Frameworks and Preprocessors
 
 You can use a preprocessor, like [LESS](http://lesscss.org/), [Stylus](http://stylus-lang.com/), and [SASS/SCSS](http://sass-lang.com/). You could use a framework like [Bootstrap](http://getbootstrap.com/), [Foundation](https://foundation.zurb.com/), or [Bulma](http://bulma.io/) if you want a good base for your styling that you can easily build upon. You could even use both a framework and preprocessor, because many of these frameworks are available in a preprocessor file format.
 
@@ -140,7 +140,7 @@ I also decided to use SCSS to give me access to very powerful features, like var
 
 **My Pick**: SCSS
 
-### Methodologies
+#### Methodologies
 
 There are also a few different ways to optimize CSS when writing it, known as CSS methodologies. I had been introduced to the idea of [Atomic CSS](https://acss.io/frequently-asked-questions.html#what-is-atomic-css-) during my web development courses. It made sense to define classes as small pieces that can be combined on an HTML element. The resuability of your classes will be very high in that case.
 
@@ -166,11 +166,11 @@ I really liked the specificity of BEM, so I decided to try it out to see if it w
 
 **My Pick**: BEM
 
-# Choosing Development Tools
+## Choosing Development Tools
 
 There are a lot of tools out there to use in a development environment. I'll go over the major ones I had to choose between and my reasoning.
 
-## Local Server
+### Local Server
  
 To configure a local server for development, the major tools I've seen are [Docker](https://www.docker.com/), [XAMPP](https://www.apachefriends.org/index.html), and [Vagrant](https://www.vagrantup.com/). I've used two for development (Docker and XAMPP). In terms of getting started, Docker has a steeper learning curve. With XAMPP, you click a few times and you're done. With Docker, it took me a few days of reading and tweaking to write my first docker-compose file for a development environment. 
 
@@ -184,7 +184,7 @@ When it came down to choosing how to configure my development environment, I dec
 
 **My Pick**: Docker
 
-## Task Running
+### Task Running
 
 If you ever find yourself doing something over and over and over again, it's time to automate it.
 
@@ -204,7 +204,7 @@ A module bundler takes JavaScript modules (i.e., files) and their dependencies (
 
 **My Pick**: Webpack
 
-## Package Management
+### Package Management
 
 Package managers make dealing with your project's dependencies really easy. You don't have to download, update or uninstall them manually—there are commands that can take care of all that for you.
 
@@ -216,7 +216,7 @@ I had already used Npm for previous projects, so I also went with it for my port
 
 **My Pick**: Npm
 
-## Version Control
+### Version Control
 
 I wanted to have a private remote repository somewhere to store my project. I had a [GitHub](https://github.com/) student license, but I wasn't interested in paying $7/month after the license was up to keep my repository private.
 
@@ -224,6 +224,6 @@ I found several alternatives including [BitBucket](https://bitbucket.org/) and [
 
 **My Pick**: GitLab
 
-# Next Steps
+## Next Steps
 
 After choosing what I wanted to use for my project, it was time to actually set up my development environment. The next post in this series will go over configuring Docker, configuring Webpack, organizing SCSS files, and more.

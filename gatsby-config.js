@@ -42,6 +42,13 @@ module.exports = {
                 path: `${__dirname}/static`,
             }
         },
+        {
+            resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+            options: {
+              siteUrl: `https://anna.elde.codes`,
+              stripQueryString: true,
+            }
+        },
         `gatsby-transformer-sharp`,
         `gatsby-transformer-remark`,
         `gatsby-transformer-json`,

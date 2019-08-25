@@ -16,9 +16,11 @@ export const query = graphql`
                 node {
                     frontmatter {
                         title,
-                        slug,
                         snippet,
                         date
+                    }
+                    fields {
+                        slug
                     }
                 }
             }
@@ -48,8 +50,9 @@ const BlogPage = ({ data: { posts: queriedPosts, banners: queriedBanners }, loca
     const limit = 5
     const banners = queriedBanners.edges.map(({ node }) => node.banner)
     const posts = slice(queriedPosts.edges.map(({ node }) => {
-        const post = node.frontmatter
-        const banner = find(banners, ({small}) => small.publicURL.includes(post.slug))
+        const post = {...node.frontmatter, ...node.fields}
+        const slug = post.slug.replace(/\//g, '')
+        const banner = find(banners, ({small}) => small.publicURL.includes(slug))
         return {...post, banner}
     }), currentPage * limit, (currentPage + 1) * limit)
     const count = posts.length;
@@ -71,7 +74,7 @@ const BlogPage = ({ data: { posts: queriedPosts, banners: queriedBanners }, loca
                 )}
 
             {posts && posts.length > 0
-                ? <PostList posts={posts} size="full" />
+                ? <PostList posts={posts} size="full" subdirectory="blog" />
                 : <p className="container">No posts are available.</p>}
 
             <Pagination params={{ page: currentPage, tag: searchTag }} count={count} limit={limit} />

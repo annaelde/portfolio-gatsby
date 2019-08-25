@@ -15,9 +15,11 @@ export const query = graphql`
                 node {
                     frontmatter {
                         title,
-                        slug,
                         snippet,
                         date
+                    }
+                    fields {
+                        slug
                     }
                 }
             }
@@ -45,7 +47,7 @@ const IndexPage = ({ data: {intro, posts} }) => (
         </div>
         {
             posts
-                ? <PostList posts={posts.edges.map(({node}) => node.frontmatter)} size="small" />
+                ? <PostList posts={posts.edges.map(({node}) => ({...node.frontmatter, ...node.fields}))} size="small" subdirectory="blog" />
                 : <p className="container">No posts are available.</p>
         }
     </Layout>
