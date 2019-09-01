@@ -8,8 +8,6 @@ tags: ['Junior Devs']
 > **Hello World** is a series covering the development of my online portfolio.
 >This is the first part of the series. You can [follow me on Twitter](https://www.twitter.com/annaeldecodes) to get updates on future posts.
 
-[TOC]
-
 ## Starting Out
 
 Back in June 2017, I was a couple of months away from graduating with an A.S. in Computer Programming. I knew it was time to start working on pulling together all the projects I'd done over the past year into a portfolio.
@@ -31,7 +29,9 @@ First, I ruled a few languages out. I am really not a fan of PHP, the complexity
 I eventually narrowed it down to [Ruby](https://www.ruby-lang.org/en/)/[Ruby on Rails](http://rubyonrails.org/) and [Python](https://www.python.org/)/[Django](https://www.djangoproject.com/). Both pairs really appealed to me because of their ease-of-use. Doing some research on these, I saw many developers talking about how their development speed increased when using these high level languages. Also in my research, I frequently found the sentiment that using these languages made programming more *pleasant*.
 
 > I believe that the purpose of life is, at least in part, to be happy. Based on this belief, Ruby is designed to make programming not only easy, but also fun. It allows you to concentrate on the creative side of programming, with less stress.
-> <div class="citation">- [Yukihiro Matsumoto, Chief Designer of Ruby](http://www.linuxtopia.org/online_books/programming_books/ruby_tutorial/foreword.html)</div>
+>
+>[[citation]]
+|[Yukihiro Matsumoto, Chief Designer of Ruby](http://www.linuxtopia.org/online_books/programming_books/ruby_tutorial/foreword.html)
 
 The main setback in using these languages is actual processing time. They are much slower than PHP, C#, JavaScript, etc. on all the benchmarks I looked at. However, for a simple portfolio website with caching enabled, this really makes no difference.
 

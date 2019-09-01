@@ -109,9 +109,8 @@ main p
 	padding-bottom: 1em;
 }
 
-main a
-{
-	color: $c_link;
+@mixin link-outside-copy {
+    color: $c_link;
 	text-decoration: none;
 	transition: color .3s;
 
@@ -131,9 +130,7 @@ main a
 	}
 }
 
-
-main p a
-{
+@mixin link-in-copy {
     color: $c_plink;
 
 	&:visited
@@ -150,6 +147,17 @@ main p a
 	{
 		color: $c_plink_active;
 	}
+}
+
+main a
+{
+    @include link-outside-copy;
+}
+
+
+main p a
+{
+    @include link-in-copy;
 }
 
 main ul, main ol

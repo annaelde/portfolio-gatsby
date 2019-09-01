@@ -5,7 +5,7 @@ import React from "react"
 const Header = ({ siteTitle }) => (
     <header>
         <div className="container">
-            <div id="title"><a href="/" tabIndex="1">Anna Elde</a></div>
+            <div id="title"><Link to="/" tabIndex="1">Anna Elde</Link></div>
             <nav role="navigation">
                 <button type="menu" title="This menu requires JavaScript." id="menu-icon" tabIndex="2"><span className="button__label">Toggle Navigation Menu</span></button>
                 <ul>

@@ -1,12 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import queryString from 'query-string'
-import {range} from 'lodash'
+import { range } from 'lodash'
 
-const getParams = (page, tag) => page ? queryString.stringify({page, ...(tag && {tag})}) : null
+const getParams = (page, tag) => page ? queryString.stringify({ page, ...(tag && { tag }) }) : null
 
-const Pagination = ({params, count, limit = 10}) => {
-    const {page: currentPage = 0, tag} = params
+const Pagination = ({ params, count, limit = 10 }) => {
+    const { page: currentPage = 0, tag } = params
 
     const totalPages = Math.floor(count / limit)
     const nextPage = currentPage < totalPages ? currentPage + 1 : null
@@ -18,8 +18,8 @@ const Pagination = ({params, count, limit = 10}) => {
     return (
         <div className="pagination">
             {prevParams
-            ? <a className="pagination__nav pagination__nav--previous" href={prevParams}></a>
-            : <a className="pagination__nav pagination__nav--previous--disabled"></a>}
+                ? <Link className="pagination__nav pagination__nav--previous" to={prevParams}></Link>
+                : <Link className="pagination__nav pagination__nav--previous--disabled"></Link>}
             <ul className="pagination__numbers">
                 {range(0, totalPages || 1).map(page => {
                     const isCurrent = page == currentPage
@@ -27,15 +27,15 @@ const Pagination = ({params, count, limit = 10}) => {
                     return (
                         <li key={page} className={itemClass}>
                             {isCurrent ? page + 1 : (
-                                <a href={getParams(page, tag)}>{page + 1}</a>
+                                <Link to={getParams(page, tag)}>{page + 1}</Link>
                             )}
                         </li>
                     )
                 })}
             </ul>
             {nextParams
-                ? <a className="pagination__nav pagination__nav--next" href={nextParams}></a>
-                : <a className="pagination__nav pagination__nav--next--disabled"></a>}
+                ? <Link className="pagination__nav pagination__nav--next" to={nextParams}></Link>
+                : <Link className="pagination__nav pagination__nav--next--disabled"></Link>}
         </div>
     )
 }
