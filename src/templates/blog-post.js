@@ -6,6 +6,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export default ({ pageContext: { post } }) => {
+    // Must transform the TOC slugs for now, since transformer-remark is leaving a trailing slash
+    const tableOfContents = post.tableOfContents.replace(/(\/blog\/.*)\/(\#.*[\"\'])/g, '$1$2')
     return (
         <Layout>
             <SEO title={post.title} description={post.snippet}></SEO>
@@ -30,9 +32,9 @@ export default ({ pageContext: { post } }) => {
             <article role="article" className="post">
                 <div className="toc">
                     <h2 className="toc__heading">Table of Contents</h2>
-                    <div className="toc__list" dangerouslySetInnerHTML={{__html: post.tableOfContents}} />
+                    <div className="toc__list" dangerouslySetInnerHTML={{ __html: tableOfContents }} />
                 </div>
-                <div className="post__content" dangerouslySetInnerHTML={{__html: post.html}} />
+                <div className="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
                 <div className="tag-list">
                     <h4>Tags:</h4>
                     {post.tags.map(tag => (
@@ -43,12 +45,12 @@ export default ({ pageContext: { post } }) => {
                 <div className="social social--horizontal">
                     <h4 className="social__title">Share<span>:</span></h4>
                     <ul className="social__icons">
-                        <li className="social__icon social__icon--facebook"><Link role="link" to={`https://www.facebook.com/sharer.php?u=${window.location.href}&t=${encodeURI(post.title)}`} title="Share via Facebook"></Link></li>
-                        <li className="social__icon social__icon--twitter"><Link role="link" to={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURI(post.title)}&via=annaeldecodes`} title="Share via Twitter"></Link></li>
-                        <li className="social__icon social__icon--tumblr"><Link role="link" to={`http://tumblr.com/widgets/share/tool?canonicalUrl=${window.location.href}&?data-title=${encodeURI(post.title)}`} title="Share via Tumblr"></Link></li>
-                        <li className="social__icon social__icon--reddit"><Link role="link" to={`https://reddit.com/submit?url=${window.location.href}&title=${encodeURI(post.title)}`} title="Share via Reddit"></Link></li>
-                        <li className="social__icon social__icon--email"><Link role="link" to={`mailto:?&subject=Anna Elde Codes | ${encodeURI(post.title)}&body=${window.location.href}`} title="Share via Email"></Link></li>
-                        <li className="social__icon social__icon--print"><Link role="link" to="javascript:window.print()" title="Print/Save as PDF"></Link></li>
+                        <li className="social__icon social__icon--facebook"><a role="link" href={`https://www.facebook.com/sharer.php?u=${window.location.href}&t=${encodeURI(post.title)}`} title="Share via Facebook"></a></li>
+                        <li className="social__icon social__icon--twitter"><a role="link" href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURI(post.title)}&via=annaeldecodes`} title="Share via Twitter"></a></li>
+                        <li className="social__icon social__icon--tumblr"><a role="link" href={`http://tumblr.com/widgets/share/tool?canonicalUrl=${window.location.href}&?data-title=${encodeURI(post.title)}`} title="Share via Tumblr"></a></li>
+                        <li className="social__icon social__icon--reddit"><a role="link" href={`https://reddit.com/submit?url=${window.location.href}&title=${encodeURI(post.title)}`} title="Share via Reddit"></a></li>
+                        <li className="social__icon social__icon--email"><a role="link" href={`mailto:?&subject=Anna Elde Codes | ${encodeURI(post.title)}&body=${window.location.href}`} title="Share via Email"></a></li>
+                        <li className="social__icon social__icon--print"><button onClick={() => window.print()} title="Print/Save as PDF"></button></li>
                     </ul>
                 </div>
             </article>

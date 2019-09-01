@@ -1,12 +1,21 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { kebabCase } from 'lodash';
 
 import PostBanner from './post-banner'
 
-export default ({ title, snippet, date, slug, banner = {}, size, ...props }) => {
+export default ({ title, snippet, date, tags, slug, banner = {}, size, ...props }) => {
     const isFullsize = size == 'full'
     const itemClass = `post-list__item ${isFullsize ? 'post-list__item--full' : 'post-list__item--small'}`
     const headingClass = `post-list__heading ${isFullsize ? 'post-list__heading--full' : ''}`
+
+    const tagList = tags && (
+        <span className="post-list__tags">
+            <span className="icon__label">Tagged with </span>
+            {tags.map(tag => (<Link to={`blog?tag=${kebabCase(tag)}`}>{tag}</Link>))
+                .reduce((result, item) => <>{result}, {item}</>)}
+        </span>
+    )
 
     return (
         <div className={itemClass}>
@@ -18,12 +27,8 @@ export default ({ title, snippet, date, slug, banner = {}, size, ...props }) => 
                 </Link>
             </div>
             <div className="post-list__meta ">
-                <span className="post-list__author"><span className="icon__label">Written by </span>Anna Elde</span>
                 <time className="post-list__time"><span className="icon__label">Published on </span>{date}</time>
-                <Link className="post-list__comment-link" to={`${slug}#comments`} title="View Comments">
-                    <span className="post-list__comment-count post-list__comment-count--small disqus-comment-count" data-disqus-identifier={slug}>0</span>
-                    <span className="button__label"> Comments</span>
-                </Link>
+                {tagList}
             </div>
             <p className="post-list__summary">{snippet}</p>
         </div>

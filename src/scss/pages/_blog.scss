@@ -95,6 +95,14 @@
 	}
 }
 
+.post-list__tags
+{
+    &::before
+    {
+        @include icon-tag($c_tertiary);
+    }
+}
+
 .post-list__meta
 {
 	@include type-regular;

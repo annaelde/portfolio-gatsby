@@ -181,7 +181,7 @@ main blockquote
     max-width: calc(100% - 2em);
     box-sizing: border-box;
 
-	div.citation
+	.citation
 	{
 		@include type-small;
 	}

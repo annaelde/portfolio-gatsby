@@ -83,6 +83,7 @@ module.exports = {
                 }],
             }
         },
+        `gatsby-plugin-remove-trailing-slashes`,
         `gatsby-transformer-sharp`,
         `gatsby-transformer-json`,
         `gatsby-plugin-sharp`

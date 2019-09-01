@@ -1,8 +1,8 @@
 ---
 title: 'Hello World Pt. 1: Choosing Your Stack'
-date: January 1 2019
+date: September 29 2017
 snippet: Before making a site, you have to pick a language, framework, tools... the list goes on. Find out what I chose to use for my portfolio site and why.
-tags: ['Junior Devs']
+tags: ['Junior', 'Deep Dive', 'Basics']
 ---
 
 > **Hello World** is a series covering the development of my online portfolio.
@@ -30,8 +30,7 @@ I eventually narrowed it down to [Ruby](https://www.ruby-lang.org/en/)/[Ruby on 
 
 > I believe that the purpose of life is, at least in part, to be happy. Based on this belief, Ruby is designed to make programming not only easy, but also fun. It allows you to concentrate on the creative side of programming, with less stress.
 >
->[[citation]]
-|[Yukihiro Matsumoto, Chief Designer of Ruby](http://www.linuxtopia.org/online_books/programming_books/ruby_tutorial/foreword.html)
+><a class="citation" href="http://www.linuxtopia.org/online_books/programming_books/ruby_tutorial/foreword.html">Yukihiro Matsumoto, Chief Designer of Ruby</a>
 
 The main setback in using these languages is actual processing time. They are much slower than PHP, C#, JavaScript, etc. on all the benchmarks I looked at. However, for a simple portfolio website with caching enabled, this really makes no difference.
 
@@ -103,7 +102,7 @@ That being said, I still like the look and feel that SPAs have, especially the i
 
 I'm definitely going to learn Vue and perhaps I'll refactor my JavaScript code once I feel comfortable enough using it. But for now, I'm more than satisfied with Barba.js.
 
-** My Pick**: Barba.js
+**My Pick**: Barba.js
 
 #### Transpilers
 

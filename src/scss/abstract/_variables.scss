@@ -46,7 +46,7 @@ $font_heading: arcon, arial, sans-serif;
 $font_paragraph: arcon, arial, sans-serif;
 
 // Font Sizes
-$s_root: 62.5%; // 10px 
+$s_root: 62.5%; // 10px
 $s_title: scale(4) * 1em;
 $s_nav: scale(3) * 1em;
 $s_h1: scale(3) * 1em;
@@ -54,7 +54,7 @@ $s_h2: scale(2) * 1em;
 $s_h3: scale(1) * 1em;
 $s_h4: scale(0) * 1em;
 $s_paragraph: scale(0) * 1em;
-$s_small: scale(-1) * 1em;
+$s_small: scale(-1) * 1rem;
 
 // Devices
 $huge_width: calc-em(1280) * 1em;

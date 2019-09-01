@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, Link } from 'gatsby'
-import { slice, find } from 'lodash'
+import { slice, find, kebabCase } from 'lodash'
 import queryString from 'query-string'
 
 import Layout from "../components/layout"
@@ -8,7 +8,6 @@ import SEO from "../components/seo"
 import PostList from '../components/post-list'
 import Pagination from '../components/pagination'
 import TagCloud from '../components/tag-cloud'
-import { kebabCase } from 'change-case';
 
 export const query = graphql`
     query {
@@ -52,13 +51,13 @@ const BlogPage = ({ data: { posts: queriedPosts, banners: queriedBanners, tags: 
     // Transform queried data to pass into child components
     const banners = queriedBanners.edges.map(({ node }) => node.banner)
     const posts = slice(queriedPosts.edges.map(({ node }) => {
-        const post = {...node.frontmatter, ...node.fields}
-        const slug = post.slug.replace(/\//g, '')
-        const banner = find(banners, ({small}) => small.publicURL.includes(slug))
-        return {...post, banner}
+        const post = { ...node.frontmatter, ...node.fields }
+        const slug = post.slug.replace(/blog\/.*/g, '')
+        const banner = find(banners, ({ small }) => small.publicURL.includes(slug))
+        return { ...post, banner }
     }), currentPage * limit, (currentPage + 1) * limit)
     const count = posts.length;
-    const tags = queriedTags.distinct ? queriedTags.distinct.map(tag => ({name: tag, slug: kebabCase(tag)})) : []
+    const tags = queriedTags.distinct ? queriedTags.distinct.map(tag => ({ name: tag, slug: kebabCase(tag) })) : []
     const tag = find(tags, ({ slug }) => slug === searchTag)
     return (
         <Layout>
@@ -75,7 +74,7 @@ const BlogPage = ({ data: { posts: queriedPosts, banners: queriedBanners, tags: 
                     </div>
                 )}
             {posts && posts.length > 0
-                ? <PostList posts={posts} size="full" subdirectory="blog" />
+                ? <PostList posts={posts} size="full" />
                 : <p className="container">No posts are available.</p>}
             <Pagination params={{ page: currentPage, tag: searchTag }} count={count} limit={limit} />
             <TagCloud tags={tags} />

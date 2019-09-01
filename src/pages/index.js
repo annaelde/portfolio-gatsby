@@ -16,7 +16,8 @@ export const query = graphql`
                     frontmatter {
                         title,
                         snippet,
-                        date
+                        date,
+                        tags
                     }
                     fields {
                         slug
@@ -27,7 +28,7 @@ export const query = graphql`
     }
 `
 
-const IndexPage = ({ data: {intro, posts} }) => (
+const IndexPage = ({ data: { intro, posts } }) => (
     <Layout>
         <SEO title="Home" description="I'm a full-stack software engineer in the Orlando area. Check out my projects and read my blog here." />
 
@@ -47,7 +48,7 @@ const IndexPage = ({ data: {intro, posts} }) => (
         </div>
         {
             posts
-                ? <PostList posts={posts.edges.map(({node}) => ({...node.frontmatter, ...node.fields}))} size="small" subdirectory="blog" />
+                ? <PostList posts={posts.edges.map(({ node }) => ({ ...node.frontmatter, ...node.fields }))} size="small" />
                 : <p className="container">No posts are available.</p>
         }
     </Layout>

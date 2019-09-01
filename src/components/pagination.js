@@ -19,7 +19,7 @@ const Pagination = ({ params, count, limit = 10 }) => {
         <div className="pagination">
             {prevParams
                 ? <Link className="pagination__nav pagination__nav--previous" to={prevParams}></Link>
-                : <Link className="pagination__nav pagination__nav--previous--disabled"></Link>}
+                : <span className="pagination__nav pagination__nav--previous--disabled"></span>}
             <ul className="pagination__numbers">
                 {range(0, totalPages || 1).map(page => {
                     const isCurrent = page == currentPage
@@ -35,7 +35,7 @@ const Pagination = ({ params, count, limit = 10 }) => {
             </ul>
             {nextParams
                 ? <Link className="pagination__nav pagination__nav--next" to={nextParams}></Link>
-                : <Link className="pagination__nav pagination__nav--next--disabled"></Link>}
+                : <span className="pagination__nav pagination__nav--next--disabled"></span>}
         </div>
     )
 }
